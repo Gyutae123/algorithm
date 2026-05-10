@@ -45,5 +45,5 @@ int solution(vector<int> sides) {
     else{
         answer = 1;
     }
-    return answer;
+    return answer; 
 }
