@@ -1,0 +1,58 @@
+문제: 문자열 str1, str2가 매개변수로 주어집니다. str1 안에 str2가 있다면 1을 없다면 2를 return하도록 solution 함수를 완성해주세요.
+입출력: 
+str1	str2	result
+"ab6CDE443fgh22iJKlmn1o"	"6CD"	1
+"ppprrrogrammers"	"pppp"	2
+"AbcAbcA"	"AAA"	2
+
+답: 
+//이중for문
+#include <string>
+#include <vector>
+
+using namespace std;
+
+int solution(string str1, string str2) {
+    for(int i = 0; i < str1.size(); i++){
+        bool found = true;
+        for(int j = 0; j < str2.size(); j++){
+            if(i + j > str1.size() || str1[i + j] != str2[j]){
+                found = false;
+                break;
+            }
+        }
+        if(found) return 1;
+    }
+    return 2;
+}
+
+##########
+//substr
+#include <string>
+#include <vector>
+
+using namespace std;
+
+int solution(string str1, string str2) {
+    int answer = 0;
+    for(int i = 0; i < str1.size(); i++){
+        if(str1.substr(i, str2.size()) == str2){
+            answer = 1;
+            break;
+        }
+        else answer = 2;
+    }
+    return answer;
+}
+##########
+//find, npos
+#include <string>
+#include <vector>
+
+using namespace std;
+
+int solution(string str1, string str2) {
+    int answer = 0;
+    answer = (str1.find(str2) != string::npos ? 1 : 2);
+    return answer;
+}
